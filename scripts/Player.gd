@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 var player_direction : Vector2
 
 func _physics_process(delta: float) -> void:
+	look_at(get_global_mouse_position())
 	player_direction.x = Input.get_axis("Left", "Right")
 	player_direction.y = Input.get_axis("Up", "Down")
 	if player_direction:
