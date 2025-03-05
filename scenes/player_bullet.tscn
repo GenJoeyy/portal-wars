@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvi1uy448ffyi"]
+
+[ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="1_eipvv"]
+[ext_resource type="Script" path="res://scripts/player_bullet.gd" id="1_p42yt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e5o8"]
+atlas = ExtResource("1_eipvv")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_licgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e5o8")
+}],
+"loop": true,
+"name": &"Bullet",
+"speed": 5.0
+}]
+
+[node name="PlayerBullet" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_p42yt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 2
+sprite_frames = SubResource("SpriteFrames_licgh")
+animation = &"Bullet"
