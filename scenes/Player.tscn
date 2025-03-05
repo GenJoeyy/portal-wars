@@ -57,10 +57,10 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 2)
 script = ExtResource("1_6785a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_vlg1q")
 animation = &"Player"

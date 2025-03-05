@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var bullet_scene = preload("res://scenes/player_bullet.tscn")
+@onready var timer: Timer = $FireRate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,3 +23,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
 	move_and_slide()
+	
+	if Input.is_action_pressed("Shoot") and timer.is_stopped():
+		shoot()
+	
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position
+	bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
+	get_parent().add_child(bullet)
+	timer.start()
