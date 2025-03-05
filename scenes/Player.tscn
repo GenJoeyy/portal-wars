@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://irxuonymwrlt"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_6785a"]
+[ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_2js8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t71ii"]
+atlas = ExtResource("2_2js8c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlg1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t71ii")
+}],
+"loop": true,
+"name": &"Player",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_6785a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vlg1q")
+animation = &"Player"
