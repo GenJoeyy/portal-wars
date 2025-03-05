@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://74t8yh7qg47m"]
+
+[ext_resource type="Script" path="res://scripts/ufo.gd" id="1_321qx"]
+[ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_jpqda"]
+[ext_resource type="AudioStream" uid="uid://deo0262c5170i" path="res://assets/Sounds/UfoExplosion.wav" id="3_knu2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhmuk"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cdsi"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg4vo"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6p2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhmuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cdsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg4vo")
+}],
+"loop": true,
+"name": &"Ufo",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wkwq"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4olm"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk0gc"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbkya"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu65b"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d57b6"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybk0r"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dd13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4olm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk0gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbkya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu65b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d57b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybk0r")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 10.0
+}]
+
+[node name="Ufo" type="CharacterBody2D"]
+script = ExtResource("1_321qx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k6p2a")
+animation = &"Ufo"
+autoplay = "Ufo"
+frame_progress = 0.884535
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5wkwq")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6dd13")
+animation = &"Explosion"
+frame_progress = 0.393846
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_knu2y")
+volume_db = -18.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

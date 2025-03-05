@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://irxuonymwrlt"]
+[gd_scene load_steps=10 format=3 uid="uid://irxuonymwrlt"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_6785a"]
 [ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_2js8c"]
+[ext_resource type="AudioStream" uid="uid://3adyl6ig8ofa" path="res://assets/Sounds/PlayerBullet1.wav" id="3_bye47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_54j7g"]
 atlas = ExtResource("2_2js8c")
@@ -64,3 +65,6 @@ script = ExtResource("1_6785a")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_vlg1q")
 animation = &"Player"
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bye47")
