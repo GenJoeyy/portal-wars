@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
-[ext_resource type="PackedScene" uid="uid://74t8yh7qg47m" path="res://scenes/ufo.tscn" id="2_6a565"]
+[ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,11 +9,9 @@
 scale = Vector2(3.14001, 3.14001)
 
 [node name="FireRate" type="Timer" parent="Player"]
-wait_time = 0.312
+wait_time = 0.5
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Ufo" parent="." instance=ExtResource("2_6a565")]
-position = Vector2(70, -211)
-scale = Vector2(3.76775, 3.76775)
+[node name="UfoSpawner" parent="." instance=ExtResource("2_kwrr0")]

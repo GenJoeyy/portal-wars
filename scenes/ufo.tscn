@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://74t8yh7qg47m"]
+[gd_scene load_steps=17 format=3 uid="uid://74t8yh7qg47m"]
 
 [ext_resource type="Script" path="res://scripts/ufo.gd" id="1_321qx"]
 [ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_jpqda"]
 [ext_resource type="AudioStream" uid="uid://deo0262c5170i" path="res://assets/Sounds/UfoExplosion.wav" id="3_knu2y"]
+[ext_resource type="AudioStream" uid="uid://b674qqbsswyyj" path="res://assets/Sounds/hitHurt.wav" id="4_351bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhmuk"]
 atlas = ExtResource("2_jpqda")
@@ -90,7 +91,10 @@ animations = [{
 }]
 
 [node name="Ufo" type="CharacterBody2D"]
+scale = Vector2(4.36657, 4.36657)
 script = ExtResource("1_321qx")
+health = 2
+movement_speed = 300
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k6p2a")
@@ -99,23 +103,24 @@ autoplay = "Ufo"
 frame_progress = 0.884535
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5wkwq")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6dd13")
 animation = &"Explosion"
-frame_progress = 0.393846
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 
-[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+[node name="Explosion_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_knu2y")
 volume_db = -18.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_351bj")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,12 @@
 extends Enemy
-@onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var timer: Timer = $Timer
-@onready var explosion: AudioStreamPlayer2D = $Explosion
+@onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
+@onready var player: CharacterBody2D = $"../Player"
+@onready var hit: AudioStreamPlayer2D = $Hit
+@onready var explosion_sound: AudioStreamPlayer2D = $Explosion_Sound
 
 var alive = true
-
+var ufo_direction 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,17 +14,25 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
 	
-
+	
+func _physics_process(delta: float) -> void:
+	ufo_direction = (position - player.position).normalized()
+	position -= ufo_direction * movement_speed * delta
+	
 #Tod
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if alive:
-		alive = false
-		timer.start()
-		explosion.play()
-		animated_sprite_2d_2.play("Explosion")
+		if health == 0:
+			alive = false
+			timer.start()
+			explosion_sprite.play()
+			explosion_sound.play()
+		else: 
+			health -= 1
+			hit.play()
+
 
 
 func _on_timer_timeout() -> void:
