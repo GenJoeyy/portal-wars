@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://irxuonymwrlt"]
+[gd_scene load_steps=12 format=3 uid="uid://irxuonymwrlt"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_6785a"]
 [ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_2js8c"]
 [ext_resource type="AudioStream" uid="uid://3adyl6ig8ofa" path="res://assets/Sounds/PlayerBullet1.wav" id="3_bye47"]
+[ext_resource type="AudioStream" uid="uid://cstiq20wjorqm" path="res://assets/Sounds/Hit_3.wav" id="4_myb8p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_54j7g"]
 atlas = ExtResource("2_2js8c")
@@ -57,6 +58,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8igeu"]
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_6785a")
@@ -68,3 +71,19 @@ animation = &"Player"
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_bye47")
+volume_db = -6.351
+
+[node name="Area" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(-1, 0)
+rotation = 1.5708
+scale = Vector2(0.381761, 0.381761)
+shape = SubResource("CapsuleShape2D_8igeu")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_myb8p")
+volume_db = -0.015
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

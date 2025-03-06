@@ -3,12 +3,15 @@ extends CharacterBody2D
 @onready var bullet_scene = preload("res://scenes/player_bullet.tscn")
 @onready var timer: Timer = $FireRate
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
 
-@export var movement_speed : float = 500
-var player_direction : Vector2
+@export var movement_speed: float = 500
+@export var health = 3
+
+var player_direction: Vector2
+var alive = true
 
 func _physics_process(delta: float) -> void:
-	
 	#Mausausrichtung
 	look_at(get_global_mouse_position())
 	
@@ -35,3 +38,13 @@ func shoot():
 	bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
 	get_parent().add_child(bullet)
 	timer.start()
+
+
+func _on_area_area_entered(area: Area2D) -> void:
+	if alive:
+		if health == 1:
+			get_tree().reload_current_scene()
+		else:
+			health -= 1
+			hit_sound.play()
+	pass 

@@ -1,9 +1,11 @@
 extends Enemy
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = $TimerDeath
 @onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
 @onready var player: CharacterBody2D = $"../Player"
 @onready var hit: AudioStreamPlayer2D = $Hit
 @onready var explosion_sound: AudioStreamPlayer2D = $Explosion_Sound
+@onready var ubullet_scene = preload("res://scenes/ufo_bullet.tscn")
+
 
 var alive = true
 var ufo_direction 
@@ -24,7 +26,7 @@ func _physics_process(delta: float) -> void:
 #Tod
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if alive:
-		if health == 0:
+		if health == 1:
 			alive = false
 			timer.start()
 			explosion_sprite.play()
@@ -33,7 +35,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			health -= 1
 			hit.play()
 
-
-
+#TodTimer
 func _on_timer_timeout() -> void:
 	queue_free()
+
+#SchussTimer 
+func _on_timer_shoot_timeout() -> void:
+	shoot()
+func shoot():
+	var ubullet = ubullet_scene.instantiate()
+	ubullet.position = position
+	ubullet.ufo_bullet_direction = (position - player.position).normalized()
+	get_parent().add_child(ubullet)
+	pass

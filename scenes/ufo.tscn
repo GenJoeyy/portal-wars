@@ -94,7 +94,7 @@ animations = [{
 scale = Vector2(4.36657, 4.36657)
 script = ExtResource("1_321qx")
 health = 2
-movement_speed = 300
+movement_speed = 250
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k6p2a")
@@ -103,6 +103,7 @@ autoplay = "Ufo"
 frame_progress = 0.884535
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -112,15 +113,19 @@ shape = SubResource("CircleShape2D_5wkwq")
 sprite_frames = SubResource("SpriteFrames_6dd13")
 animation = &"Explosion"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerDeath" type="Timer" parent="."]
 wait_time = 0.6
 
 [node name="Explosion_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_knu2y")
-volume_db = -18.0
+volume_db = -8.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_351bj")
 
+[node name="TimerShoot" type="Timer" parent="."]
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDeath" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
