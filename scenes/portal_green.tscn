@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://drqyefghqsvuf"]
+[gd_scene load_steps=27 format=3 uid="uid://drqyefghqsvuf"]
 
+[ext_resource type="Script" path="res://scripts/portal_green.gd" id="1_0c82r"]
 [ext_resource type="Texture2D" uid="uid://257egm7510v0" path="res://assets/Green Portal Sprite Sheet.png" id="1_hnij1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_erax1"]
@@ -174,9 +175,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxdx7"]
+radius = 4.82868
+height = 27.5925
+
 [node name="portal_green" type="Area2D"]
+script = ExtResource("1_0c82r")
 
 [node name="PortalSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sa22v")
 animation = &"Portal_Idle"
-frame_progress = 0.89087
+frame_progress = 0.300016
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(1.44967, 1.44967)
+shape = SubResource("CapsuleShape2D_vxdx7")
