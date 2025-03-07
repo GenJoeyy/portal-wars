@@ -1,7 +1,7 @@
 extends Enemy
 @onready var timer: Timer = $TimerDeath
 @onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
-@onready var player: CharacterBody2D = $"../Player"
+@onready var player: CharacterBody2D = $"/root/Game/Player"
 @onready var hit: AudioStreamPlayer2D = $Hit
 @onready var explosion_sound: AudioStreamPlayer2D = $Explosion_Sound
 @onready var ubullet_scene = preload("res://scenes/ufo_bullet.tscn")
@@ -46,5 +46,6 @@ func shoot():
 	var ubullet = ubullet_scene.instantiate()
 	ubullet.position = position
 	ubullet.ufo_bullet_direction = (position - player.position).normalized()
+	#ubullet.look_at(player.global_position)
 	get_parent().add_child(ubullet)
 	pass

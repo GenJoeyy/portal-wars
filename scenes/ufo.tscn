@@ -93,18 +93,16 @@ animations = [{
 [node name="Ufo" type="CharacterBody2D"]
 scale = Vector2(4.36657, 4.36657)
 script = ExtResource("1_321qx")
-health = 2
-movement_speed = 250
+movement_speed = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k6p2a")
 animation = &"Ufo"
 autoplay = "Ufo"
-frame_progress = 0.884535
+frame_progress = 0.483418
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 2
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5wkwq")
@@ -124,6 +122,7 @@ volume_db = -8.0
 stream = ExtResource("4_351bj")
 
 [node name="TimerShoot" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
