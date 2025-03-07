@@ -42,18 +42,14 @@ func _on_despawn_timer_timeout() -> void:
 	queue_free()
 
 func _on_area_entered(area):
-	if area is Teleportable and other:
-		object_entered(area)
+	var object = area.get_parent()
+	print(object)
+	#if area.tp_allowed:
+	#	area.position = other.position
+	#	area.tp_allowed = false
 
 func _on_area_exited(area):
-	if area is Teleportable:
-		object_exited(area)
-
-func object_entered(object: Teleportable) -> void:
-	if object.tp_allowed:
-		object.position = other.position
-		object.disable_tp()
-		
-func object_exited(object: Teleportable) -> void:
-	if not object.tp_allowed:
-		object.enable_tp()
+	var object = area.get_parent()
+	print(object)
+	#if not area.tp_allowed:
+	#	area.tp_allowed = true

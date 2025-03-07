@@ -40,7 +40,7 @@ func shoot():
 	timer.start()
 
 
-func _on_area_area_entered(_area: Area2D) -> void:
+func _on_area_area_entered(area: Area2D) -> void:
 	if alive:
 		if health == 1:
 			get_tree().reload_current_scene()

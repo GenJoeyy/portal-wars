@@ -28,10 +28,12 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if alive:
 		if health == 1:
 			alive = false
+			movement_speed = 0
+			$Area2D/CollisionShape2D.disabled = true
 			timer.start()
 			explosion_sprite.play()
 			explosion_sound.play()
-		else: 
+		else:
 			health -= 1
 			hit.play()
 
@@ -41,7 +43,9 @@ func _on_timer_timeout() -> void:
 
 #SchussTimer 
 func _on_timer_shoot_timeout() -> void:
-	shoot()
+	if alive:
+		shoot()
+	
 func shoot():
 	var ubullet = ubullet_scene.instantiate()
 	ubullet.position = position

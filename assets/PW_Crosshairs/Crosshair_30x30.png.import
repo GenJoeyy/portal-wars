@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3ieekrp8u0ba"
-path="res://.godot/imported/PW_title_text_no_portal.png-c84572ec876817b0dc2ee4b5c207f262.ctex"
+uid="uid://blf3hwhvki3w7"
+path="res://.godot/imported/Crosshair_30x30.png-2ad223542c9618b9a14798f4fdb5db30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PW_title_text_no_portal.png"
-dest_files=["res://.godot/imported/PW_title_text_no_portal.png-c84572ec876817b0dc2ee4b5c207f262.ctex"]
+source_file="res://assets/PW_Crosshairs/Crosshair_30x30.png"
+dest_files=["res://.godot/imported/Crosshair_30x30.png-2ad223542c9618b9a14798f4fdb5db30.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c37q1nousni6j"
-path="res://.godot/imported/ELR_Corsshairs.png-129eb5c3c8f0d14bc7430ed4b1a0fd56.ctex"
+uid="uid://c3ieekrp8u0ba"
+path="res://.godot/imported/PW_title_text_no_portal.png-abb1e6e885c02d055ffdf4c165c34047.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ELR_Corsshairs.png"
-dest_files=["res://.godot/imported/ELR_Corsshairs.png-129eb5c3c8f0d14bc7430ed4b1a0fd56.ctex"]
+source_file="res://assets/Title/PW_title_text_no_portal.png"
+dest_files=["res://.godot/imported/PW_title_text_no_portal.png-abb1e6e885c02d055ffdf4c165c34047.ctex"]
 
 [params]
 
