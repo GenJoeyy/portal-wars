@@ -20,7 +20,9 @@ func set_portal_spawn_borders() -> void:
 	portal_spawn_borders *= 0.75
 
 func _process(delta: float) -> void:
-	pass
+	# make portals look at center
+	green_portal.look_at(Vector2.ZERO)
+	purple_portal.look_at(Vector2.ZERO)
 
 func rand_portal_coords() -> Vector2:
 	var min_x = -portal_spawn_borders.x

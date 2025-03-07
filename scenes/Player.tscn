@@ -63,7 +63,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_6785a")
-health = 300000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
