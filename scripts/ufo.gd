@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	position -= ufo_direction * movement_speed * delta
 	
 #Tod
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if alive:
 		if health == 1:
 			alive = false

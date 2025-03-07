@@ -11,7 +11,7 @@ extends CharacterBody2D
 var player_direction: Vector2
 var alive = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#Mausausrichtung
 	look_at(get_global_mouse_position())
 	
@@ -40,7 +40,7 @@ func shoot():
 	timer.start()
 
 
-func _on_area_area_entered(area: Area2D) -> void:
+func _on_area_area_entered(_area: Area2D) -> void:
 	if alive:
 		if health == 1:
 			get_tree().reload_current_scene()
