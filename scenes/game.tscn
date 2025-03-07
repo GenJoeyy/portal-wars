@@ -33,11 +33,11 @@ position = Vector2(-1191, 9)
 [node name="UfoSpawner8" parent="Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(1296, -2)
 
-[node name="GreenPortal" parent="." node_paths=PackedStringArray("other") instance=ExtResource("3_b2qhj")]
+[node name="GreenPortal" parent="." node_paths=PackedStringArray("target_portal") instance=ExtResource("3_b2qhj")]
 position = Vector2(-392, -109)
-other = NodePath("../PurplePortal")
+target_portal = NodePath("../PurplePortal")
 
-[node name="PurplePortal" parent="." node_paths=PackedStringArray("other") instance=ExtResource("3_b2qhj")]
+[node name="PurplePortal" parent="." node_paths=PackedStringArray("target_portal") instance=ExtResource("3_b2qhj")]
 position = Vector2(280, 116)
 color = "purple"
-other = NodePath("../GreenPortal")
+target_portal = NodePath("../GreenPortal")

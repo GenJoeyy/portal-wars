@@ -2,7 +2,9 @@ extends Area2D
 class_name Portal
 
 @export var color: String = "green" # Default color
-@export var other: Portal = null
+@export var target_portal: Portal = null
+
+static var tp_allowed_dict = {} # holds (tp_allowed: bool) for every object
 
 var active_sprite: AnimatedSprite2D = null
 
@@ -36,20 +38,42 @@ func _on_spawn_timer_timeout() -> void:
 
 func kill() -> void:
 	$DespawnTimer.start()
+	$CollisionShape2D.disabled = true
 	active_sprite.play("despawn")
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()
 
 func _on_area_entered(area):
+	if not target_portal:
+		push_error("Target Portal not defined for " + name)
+		
 	var object = area.get_parent()
-	print(object)
-	#if area.tp_allowed:
-	#	area.position = other.position
-	#	area.tp_allowed = false
+	
+	if tp_allowed(object):
+		
+		# Player or Enemy
+		if object is CharacterBody2D:
+			object.global_position = target_portal.global_position
+		
+		disable_tp(object)
 
 func _on_area_exited(area):
 	var object = area.get_parent()
-	print(object)
-	#if not area.tp_allowed:
-	#	area.tp_allowed = true
+	if not tp_allowed(object):
+		enable_tp(object)
+
+func tp_allowed(object) -> bool:
+	var id = object.get_instance_id()
+	if not tp_allowed_dict.has(id):
+		tp_allowed_dict[id] = true
+	return tp_allowed_dict[id]
+	
+func enable_tp(object):
+	var id = object.get_instance_id()
+	tp_allowed_dict[id] = true
+	
+	
+func disable_tp(object):
+	var id = object.get_instance_id()
+	tp_allowed_dict[id] = false
