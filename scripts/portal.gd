@@ -1,10 +1,12 @@
 extends Area2D
 class_name Portal
 
-@export var color: String = "green" # Default color
-@export var target_portal: Portal = null
+static var shape = Vector2i(25, 85)
 
 static var tp_allowed_dict = {} # holds (tp_allowed: bool) for every object
+
+@export var color: String = "green" # Default color
+@export var target_portal: Portal = null
 
 var active_sprite: AnimatedSprite2D = null
 
@@ -24,13 +26,6 @@ func birth() -> void:
 	active_sprite.visible = true
 	$SpawnTimer.start()
 	active_sprite.play("spawn")
-	
-# TODO ------------
-	$TTL.start()
-
-func _on_ttl_timeout() -> void:
-	kill()
-# TODO ------------
 
 func _on_spawn_timer_timeout() -> void:
 	active_sprite.play("idle")
@@ -42,20 +37,20 @@ func kill() -> void:
 	active_sprite.play("despawn")
 
 func _on_despawn_timer_timeout() -> void:
+	active_sprite.visible = false
 	queue_free()
 
-func _on_area_entered(area):
+func _on_area_entered(object):
 	if not target_portal:
 		push_error("Target Portal not defined for " + name)
+		return
 		
-	var object = area.get_parent()
-	
+	# Player or Enemy
+	if object.get_parent() is CharacterBody2D:
+		object = object.get_parent()
+
 	if tp_allowed(object):
-		
-		# Player or Enemy
-		if object is CharacterBody2D:
-			object.global_position = target_portal.global_position
-		
+		object.global_position = target_portal.global_position
 		disable_tp(object)
 
 func _on_area_exited(area):

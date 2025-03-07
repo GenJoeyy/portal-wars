@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
 [ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
-[ext_resource type="PackedScene" uid="uid://cwy54em57f1ly" path="res://scenes/portal.tscn" id="3_b2qhj"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_syosi")
 
 [node name="Player" parent="." instance=ExtResource("1_0v1o1")]
 scale = Vector2(3.14001, 3.14001)
@@ -33,11 +34,8 @@ position = Vector2(-1191, 9)
 [node name="UfoSpawner8" parent="Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(1296, -2)
 
-[node name="GreenPortal" parent="." node_paths=PackedStringArray("target_portal") instance=ExtResource("3_b2qhj")]
-position = Vector2(-392, -109)
-target_portal = NodePath("../PurplePortal")
+[node name="PortalTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
 
-[node name="PurplePortal" parent="." node_paths=PackedStringArray("target_portal") instance=ExtResource("3_b2qhj")]
-position = Vector2(280, 116)
-color = "purple"
-target_portal = NodePath("../GreenPortal")
+[connection signal="timeout" from="PortalTimer" to="." method="_on_portal_timer_timeout"]

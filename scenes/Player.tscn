@@ -63,6 +63,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_6785a")
+health = 300000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -84,6 +85,6 @@ shape = SubResource("CapsuleShape2D_8igeu")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_myb8p")
-volume_db = -0.015
+volume_db = -5.0
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

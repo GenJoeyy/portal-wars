@@ -381,7 +381,7 @@ script = ExtResource("1_2iyo8")
 visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rbf46")
-animation = &"despawn"
+animation = &"idle"
 
 [node name="PurplePortal" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -400,9 +400,5 @@ disabled = true
 
 [node name="DespawnTimer" type="Timer" parent="."]
 
-[node name="TTL" type="Timer" parent="."]
-wait_time = 511.408
-
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
-[connection signal="timeout" from="TTL" to="." method="_on_ttl_timeout"]
