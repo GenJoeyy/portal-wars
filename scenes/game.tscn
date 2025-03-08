@@ -58,7 +58,7 @@ initial_velocity_max = 15.0
 [node name="StarsLayerFront" type="CPUParticles2D" parent="Background"]
 z_index = -90
 position = Vector2(1180, 0)
-amount = 35
+amount = 40
 lifetime = 82.0
 preprocess = 82.0
 fixed_fps = 30
@@ -70,10 +70,9 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 28.0
 initial_velocity_max = 28.0
 scale_amount_min = 4.0
-scale_amount_max = 4.0
+scale_amount_max = 5.0
 
 [node name="Menu" type="Node2D" parent="."]
-visible = false
 
 [node name="Title" type="Node2D" parent="Menu"]
 
