@@ -1,9 +1,115 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv5k2qmjein6k"]
+[gd_scene load_steps=27 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
-[ext_resource type="Texture2D" path="res://assets/Title/PW_title.png" id="2_2t8ap"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="2_6sl5r"]
 [ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
+[ext_resource type="Texture2D" uid="uid://4k13pouu1ofq" path="res://assets/menu/PW_title.png" id="3_jdr3w"]
+[ext_resource type="Texture2D" uid="uid://b3ma4wo2i5v1u" path="res://assets/menu/title_zoom/frame_000.png" id="4_2gqh8"]
+[ext_resource type="Texture2D" uid="uid://cw0ilr2ehp4j8" path="res://assets/menu/title_zoom/frame_001.png" id="5_n2bcw"]
+[ext_resource type="Texture2D" uid="uid://doopp8mvc2uqp" path="res://assets/menu/title_zoom/frame_002.png" id="6_p1yco"]
+[ext_resource type="Texture2D" uid="uid://bick34jwc3jik" path="res://assets/menu/title_zoom/frame_003.png" id="7_qk0g8"]
+[ext_resource type="Texture2D" uid="uid://dksfca0oyjhau" path="res://assets/menu/title_zoom/frame_004.png" id="8_1o1rv"]
+[ext_resource type="Texture2D" uid="uid://qet867brw6yn" path="res://assets/menu/title_zoom/frame_005.png" id="9_8k1tr"]
+[ext_resource type="Texture2D" uid="uid://svfb2ui15nji" path="res://assets/menu/title_zoom/frame_006.png" id="10_wqbuo"]
+[ext_resource type="Texture2D" uid="uid://dpi4dc5vtei0m" path="res://assets/menu/title_zoom/frame_007.png" id="11_2eubc"]
+[ext_resource type="Texture2D" uid="uid://bc1eqe7inhcbx" path="res://assets/menu/title_zoom/frame_008.png" id="12_dacd5"]
+[ext_resource type="Texture2D" uid="uid://dwydqcxlrjmdi" path="res://assets/menu/title_zoom/frame_009.png" id="13_buj5g"]
+[ext_resource type="Texture2D" uid="uid://ce7d0t5agb5e2" path="res://assets/menu/title_zoom/frame_010.png" id="14_fqmao"]
+[ext_resource type="Texture2D" uid="uid://cpmnywcdd6gi8" path="res://assets/menu/title_zoom/frame_011.png" id="15_h3w2j"]
+[ext_resource type="Texture2D" uid="uid://c0ifxsfrd7il" path="res://assets/menu/title_zoom/frame_012.png" id="16_jgeaq"]
+[ext_resource type="Texture2D" uid="uid://h4gigonc0ao8" path="res://assets/menu/title_zoom/frame_013.png" id="17_w2dxt"]
+[ext_resource type="Texture2D" uid="uid://cb80i0wrebhni" path="res://assets/menu/title_zoom/frame_014.png" id="18_4qwe2"]
+[ext_resource type="Texture2D" uid="uid://ctu4fpr6cdsuh" path="res://assets/menu/title_zoom/frame_015.png" id="19_o25f5"]
+[ext_resource type="Texture2D" uid="uid://dcvcxpbd0qmbe" path="res://assets/menu/title_zoom/frame_016.png" id="20_bnlib"]
+[ext_resource type="Texture2D" uid="uid://cm4shnj86jmxy" path="res://assets/menu/title_zoom/frame_017.png" id="21_fkm25"]
+[ext_resource type="Texture2D" uid="uid://jx12nmyxq168" path="res://assets/menu/title_zoom/frame_018.png" id="22_lcegx"]
+[ext_resource type="Texture2D" uid="uid://bk5pf7ca76p22" path="res://assets/menu/title_zoom/frame_019.png" id="23_vplf2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fddup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jdr3w")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2gqh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n2bcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p1yco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qk0g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1o1rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8k1tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wqbuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2eubc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dacd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_buj5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fqmao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h3w2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jgeaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_w2dxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4qwe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_o25f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bnlib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fkm25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lcegx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vplf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vplf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vplf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vplf2")
+}],
+"loop": true,
+"name": &"zoom in",
+"speed": 25.0
+}]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_syosi")
@@ -73,14 +179,19 @@ scale_amount_min = 4.0
 scale_amount_max = 5.0
 
 [node name="Menu" type="Node2D" parent="."]
+script = ExtResource("2_6sl5r")
 
-[node name="Title" type="Node2D" parent="Menu"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Menu/Title"]
+[node name="Title" type="AnimatedSprite2D" parent="Menu"]
 z_index = -60
 position = Vector2(0, -245)
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("2_2t8ap")
+sprite_frames = SubResource("SpriteFrames_fddup")
+animation = &"zoom in"
+frame_progress = 0.0864704
+
+[node name="TitleTimer" type="Timer" parent="Menu"]
+wait_time = 0.8
+one_shot = true
 
 [node name="GameContent" type="Node2D" parent="."]
 
@@ -115,4 +226,5 @@ position = Vector2(1296, -2)
 wait_time = 15.0
 autostart = true
 
+[connection signal="timeout" from="Menu/TitleTimer" to="Menu" method="_on_title_timer_timeout"]
 [connection signal="timeout" from="GameContent/PortalTimer" to="." method="_on_portal_timer_timeout"]

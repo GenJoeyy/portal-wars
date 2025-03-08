@@ -118,6 +118,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"despawn",
@@ -173,6 +179,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uxav3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nujf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2nujf")
@@ -304,6 +313,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_galqs")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"despawn",
@@ -362,6 +377,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_piwsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piwsh")
 }],
 "loop": true,
 "name": &"spawn",
@@ -381,14 +399,13 @@ script = ExtResource("1_2iyo8")
 visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rbf46")
-animation = &"idle"
+animation = &"spawn"
 
 [node name="PurplePortal" type="AnimatedSprite2D" parent="."]
 visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g70w6")
-animation = &"despawn"
-frame_progress = 0.806897
+animation = &"spawn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
