@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var player: CharacterBody2D = $"/root/Game/Player"
+@onready var player: CharacterBody2D = $"/root/Game/GameContent/Player"
 
 @export var speed = 400
 

@@ -24,13 +24,21 @@ func _physics_process(_delta: float) -> void:
 		velocity = player_direction * movement_speed
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
+		
 	move_and_slide()
+	
+	# clamp player to visible screen
+	var screen_size = get_viewport().get_size() / 2 
+	screen_size -= Vector2i(25, 25) # Player Size
+	position.x = clamp(position.x, -screen_size.x, screen_size.x)
+	position.y = clamp(position.y, -screen_size.y, screen_size.y)
+	
 	
 	#Schießen
 	if Input.is_action_pressed("Shoot") and timer.is_stopped():
 		shoot()
 	
-	#Schuss von player_bullet
+#Schuss von player_bullet
 func shoot():
 	shot_sound.play()
 	var bullet = bullet_scene.instantiate()

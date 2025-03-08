@@ -1,41 +1,119 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv5k2qmjein6k"]
+[gd_scene load_steps=5 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
+[ext_resource type="Texture2D" uid="uid://4k13pouu1ofq" path="res://assets/Title/PW_title.png" id="2_2t8ap"]
 [ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_syosi")
 
-[node name="Player" parent="." instance=ExtResource("1_0v1o1")]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
+layer = -1
+
+[node name="TheVoid" type="ColorRect" parent="Background/CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.976563
+anchor_top = -1.02006
+anchor_right = 1.08815
+anchor_bottom = 1.11932
+scale = Vector2(0.99088, 0.988728)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="StarsLayerMiddle" type="CPUParticles2D" parent="Background"]
+z_index = -95
+position = Vector2(1180, 0)
+amount = 500
+lifetime = 115.0
+preprocess = 115.0
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(1, 700)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+scale_amount_min = 2.5
+scale_amount_max = 3.5
+
+[node name="StarsLayerBack" type="CPUParticles2D" parent="Background"]
+z_index = -100
+position = Vector2(1180, 0)
+amount = 2000
+lifetime = 155.0
+preprocess = 155.0
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(1, 700)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+
+[node name="StarsLayerFront" type="CPUParticles2D" parent="Background"]
+z_index = -90
+position = Vector2(1180, 0)
+amount = 35
+lifetime = 82.0
+preprocess = 82.0
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(1, 700)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.0
+initial_velocity_max = 28.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+
+[node name="Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="Title" type="Node2D" parent="Menu"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Menu/Title"]
+z_index = -60
+position = Vector2(0, -245)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_2t8ap")
+
+[node name="GameContent" type="Node2D" parent="."]
+
+[node name="Player" parent="GameContent" instance=ExtResource("1_0v1o1")]
 scale = Vector2(3.14001, 3.14001)
 collision_mask = 2
 
-[node name="FireRate" type="Timer" parent="Player"]
+[node name="FireRate" type="Timer" parent="GameContent/Player"]
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="GameContent"]
 
-[node name="Spawner" type="Node" parent="."]
+[node name="Spawner" type="Node" parent="GameContent"]
 
-[node name="UfoSpawner1" parent="Spawner" instance=ExtResource("2_kwrr0")]
+[node name="UfoSpawner1" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(803, -767)
 
-[node name="UfoSpawner2" parent="Spawner" instance=ExtResource("2_kwrr0")]
+[node name="UfoSpawner2" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(9, -820)
 
-[node name="UfoSpawner3" parent="Spawner" instance=ExtResource("2_kwrr0")]
+[node name="UfoSpawner3" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(-903, -714)
 
-[node name="UfoSpawner4" parent="Spawner" instance=ExtResource("2_kwrr0")]
+[node name="UfoSpawner4" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(-1191, 9)
 
-[node name="UfoSpawner8" parent="Spawner" instance=ExtResource("2_kwrr0")]
+[node name="UfoSpawner8" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
 position = Vector2(1296, -2)
 
-[node name="PortalTimer" type="Timer" parent="."]
+[node name="PortalTimer" type="Timer" parent="GameContent"]
 wait_time = 15.0
 autostart = true
 
-[connection signal="timeout" from="PortalTimer" to="." method="_on_portal_timer_timeout"]
+[connection signal="timeout" from="GameContent/PortalTimer" to="." method="_on_portal_timer_timeout"]

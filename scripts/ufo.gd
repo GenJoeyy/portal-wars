@@ -1,7 +1,7 @@
 extends Enemy
 @onready var timer: Timer = $TimerDeath
 @onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
-@onready var player: CharacterBody2D = $"/root/Game/Player"
+@onready var player: CharacterBody2D = $"/root/Game/GameContent/Player"
 @onready var hit: AudioStreamPlayer2D = $Hit
 @onready var explosion_sound: AudioStreamPlayer2D = $Explosion_Sound
 @onready var ubullet_scene = preload("res://scenes/ufo_bullet.tscn")
@@ -29,7 +29,6 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 		if health == 1:
 			alive = false
 			movement_speed = 0
-			$Area2D/CollisionShape2D.disabled = true
 			timer.start()
 			explosion_sprite.play()
 			explosion_sound.play()

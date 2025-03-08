@@ -37,7 +37,8 @@ func rand_portal_coords() -> Vector2:
 func verify_portal_coords(a: Vector2, b: Vector2) -> bool:
 	var distance_a_b = a.distance_to(b) > portal_shape.y * 7
 	
-	var player = $Player.global_position
+	var player = $GameContent/Player.global_position
+
 	var distance_a_player = a.distance_to(player) > portal_shape.y
 	var distance_b_player = b.distance_to(player) > portal_shape.y
 	
