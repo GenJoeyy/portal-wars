@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 
+@export var skin = "Y-Wing"
 @export var movement_speed: float = 500
 @export var health = 3
 
@@ -12,6 +13,8 @@ var player_direction: Vector2
 var alive = true
 
 func _physics_process(_delta: float) -> void:
+	$AnimatedSprite2D.play(skin + " Boost" if player_direction else skin)
+	
 	#Mausausrichtung
 	look_at(get_global_mouse_position())
 	

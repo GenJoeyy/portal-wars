@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
-[ext_resource type="Texture2D" uid="uid://4k13pouu1ofq" path="res://assets/Title/PW_title.png" id="2_2t8ap"]
+[ext_resource type="Texture2D" path="res://assets/Title/PW_title.png" id="2_2t8ap"]
 [ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
 
 [node name="Game" type="Node2D"]
@@ -10,10 +10,10 @@ script = ExtResource("1_syosi")
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
+[node name="TheVoidHolder" type="CanvasLayer" parent="Background"]
 layer = -1
 
-[node name="TheVoid" type="ColorRect" parent="Background/CanvasLayer"]
+[node name="TheVoid" type="ColorRect" parent="Background/TheVoidHolder"]
 anchors_preset = -1
 anchor_left = -0.976563
 anchor_top = -1.02006

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cghjs8ymvufru"
-path="res://.godot/imported/Crosshair_12x12.png-b1373de5ae22858390d9b26dbb69a9bf.ctex"
+uid="uid://dyxricmngvjd8"
+path="res://.godot/imported/Blue_exhaust.png-d03fe263bb85cae6232428f9355f050e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PW_Crosshairs/Crosshair_12x12.png"
-dest_files=["res://.godot/imported/Crosshair_12x12.png-b1373de5ae22858390d9b26dbb69a9bf.ctex"]
+source_file="res://assets/spaceships/Blue_exhaust.png"
+dest_files=["res://.godot/imported/Blue_exhaust.png-d03fe263bb85cae6232428f9355f050e.ctex"]
 
 [params]
 
