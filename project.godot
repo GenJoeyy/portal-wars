@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-mouse_cursor/custom_image="res://assets/PW_Crosshairs/Crosshair_12x12.png"
+mouse_cursor/custom_image="res://assets/crosshairs/Crosshair_18x18.png"
 mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 [editor]
