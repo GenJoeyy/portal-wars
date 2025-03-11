@@ -1,5 +1,5 @@
 extends Node2D
-@onready var highscore_label: Label = $GameContent/Highscore_label
+@onready var highscore_label: Label = $Highscore_label
 
 const PORTAL = preload("res://scenes/portal.tscn")
 var portal_shape: Vector2i = PORTAL.instantiate().shape

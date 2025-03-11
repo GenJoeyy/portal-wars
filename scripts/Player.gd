@@ -5,7 +5,8 @@ extends CharacterBody2D
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var blue_skin: AnimatedSprite2D = $BlueSkin
-@onready var highscore_label: Label = $"../Highscore_label"
+@onready var highscore_label: Label = $"../../Highscore_label"
+@onready var current_health = health
 
 @export var skin = "Y-Wing"
 @export var movement_speed: float = 500
