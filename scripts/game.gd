@@ -1,4 +1,5 @@
 extends Node2D
+@onready var highscore_label: Label = $GameContent/Highscore_label
 
 const PORTAL = preload("res://scenes/portal.tscn")
 var portal_shape: Vector2i = PORTAL.instantiate().shape
@@ -9,6 +10,7 @@ var purple_portal: Portal
 
 func _ready() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	highscore_label.text = "Highscore = " + str(SaveLoad.highscore)
 	set_portal_spawn_borders()
 	spawn_new_portals()
 

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var blue_skin: AnimatedSprite2D = $BlueSkin
+@onready var highscore_label: Label = $"../Highscore_label"
 
 @export var skin = "Y-Wing"
 @export var movement_speed: float = 500
@@ -62,6 +63,11 @@ func shoot():
 func _on_area_area_entered(area: Area2D) -> void:
 	if alive:
 		if health == 1:
+			if Global.score > SaveLoad.highscore:
+				SaveLoad.highscore = Global.score 
+				highscore_label.text = "Highscore = " + str(SaveLoad.highscore)
+			SaveLoad.save_score()
+			Global.score = 0
 			get_tree().reload_current_scene()
 		else:
 			health -= 1

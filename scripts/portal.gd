@@ -47,6 +47,7 @@ func _on_area_entered(object):
 		
 	# Player or Enemy
 	if object.get_parent() is CharacterBody2D:
+		#Global.score += 1
 		object = object.get_parent()
 
 	if tp_allowed(object):
@@ -65,6 +66,7 @@ func tp_allowed(object) -> bool:
 	return tp_allowed_dict[id]
 	
 func enable_tp(object):
+	Global.score += 1
 	var id = object.get_instance_id()
 	tp_allowed_dict[id] = true
 	

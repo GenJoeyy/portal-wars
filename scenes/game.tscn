@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cv5k2qmjein6k"]
+[gd_scene load_steps=29 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://cm4shnj86jmxy" path="res://assets/menu/title_zoom/frame_017.png" id="21_fkm25"]
 [ext_resource type="Texture2D" uid="uid://jx12nmyxq168" path="res://assets/menu/title_zoom/frame_018.png" id="22_lcegx"]
 [ext_resource type="Texture2D" uid="uid://bk5pf7ca76p22" path="res://assets/menu/title_zoom/frame_019.png" id="23_vplf2"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="26_75v5m"]
+[ext_resource type="FontFile" uid="uid://fdhcg2iwxp64" path="res://assets/Fonts/m3x6.ttf" id="26_xm6q7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fddup"]
 animations = [{
@@ -226,6 +228,25 @@ position = Vector2(1296, -2)
 [node name="PortalTimer" type="Timer" parent="GameContent"]
 wait_time = 15.0
 autostart = true
+
+[node name="Score" type="Label" parent="GameContent"]
+texture_filter = 1
+offset_left = -928.0
+offset_top = -526.0
+offset_right = -888.0
+offset_bottom = -503.0
+scale = Vector2(5, 3.939)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+script = ExtResource("26_75v5m")
+
+[node name="Highscore_label" type="Label" parent="GameContent"]
+texture_filter = 1
+offset_left = 641.0
+offset_top = -526.0
+offset_right = 681.0
+offset_bottom = -503.0
+scale = Vector2(5, 3.939)
+theme_override_fonts/font = ExtResource("26_xm6q7")
 
 [connection signal="timeout" from="Menu/TitleTimer" to="Menu" method="_on_title_timer_timeout"]
 [connection signal="timeout" from="GameContent/PortalTimer" to="." method="_on_portal_timer_timeout"]
