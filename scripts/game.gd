@@ -1,5 +1,8 @@
 extends Node2D
 @onready var highscore_label: Label = $Highscore_label
+@onready var heartcontainer: HBoxContainer = $Health/Heartcontainer
+@onready var player: CharacterBody2D = $GameContent/Player
+
 
 const PORTAL = preload("res://scenes/portal.tscn")
 var portal_shape: Vector2i = PORTAL.instantiate().shape
@@ -10,6 +13,9 @@ var purple_portal: Portal
 
 func _ready() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	heartcontainer.set_Max_Hearts(player.health)
+	heartcontainer.update_Hearts(player.current_health)
+	player.healthChanged.connect(heartcontainer.update_Hearts)
 	highscore_label.text = "Highscore = " + str(SaveLoad.highscore)
 	set_portal_spawn_borders()
 	spawn_new_portals()

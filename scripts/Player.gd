@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var movement_speed: float = 500
 @export var health = 3
 
+signal healthChanged
 var player_direction: Vector2
 var alive = true
 
@@ -63,7 +64,7 @@ func shoot():
 
 func _on_area_area_entered(area: Area2D) -> void:
 	if alive:
-		if health == 1:
+		if current_health == 1:
 			if Global.score > SaveLoad.highscore:
 				SaveLoad.highscore = Global.score 
 				highscore_label.text = "Highscore = " + str(SaveLoad.highscore)
@@ -71,6 +72,6 @@ func _on_area_area_entered(area: Area2D) -> void:
 			Global.score = 0
 			get_tree().reload_current_scene()
 		else:
-			health -= 1
+			current_health -= 1
+			healthChanged.emit(current_health)
 			hit_sound.play()
-	pass 

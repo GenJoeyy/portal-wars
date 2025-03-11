@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8a5lfdygxjsu"]
+[gd_scene load_steps=3 format=3 uid="uid://c8a5lfdygxjsu"]
 
+[ext_resource type="Script" path="res://scripts/heart.gd" id="1_an7tb"]
 [ext_resource type="Texture2D" uid="uid://5gp6ajre52xp" path="res://assets/HealthUI.png" id="1_o8mg3"]
 
 [node name="Heart" type="Panel"]
@@ -8,8 +9,10 @@ custom_minimum_size = Vector2(9, 0)
 offset_right = 9.0
 offset_bottom = 10.0
 scale = Vector2(0.991723, 0.991723)
+script = ExtResource("1_an7tb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-1.00835, 0)
 texture = ExtResource("1_o8mg3")
 centered = false
