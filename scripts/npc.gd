@@ -24,12 +24,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if alive:
-		update_direction(delta)
+		direction = update_direction(delta).normalized()
 		position -= direction * speed * delta
 	
 # can be overridden
-func update_direction(delta: float) -> void:
-	direction = (position - player.global_position if is_hostile else  direction).normalized()
+func update_direction(delta: float) -> Vector2:
+	return direction
 
 	
 func hit(damage_taken: float) -> void:

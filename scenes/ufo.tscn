@@ -90,7 +90,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="TestUFO" type="CharacterBody2D"]
+[node name="Ufo" type="CharacterBody2D"]
 scale = Vector2(4.367, 4.367)
 script = ExtResource("1_321qx")
 is_hostile = true
@@ -100,7 +100,7 @@ speed = 200.0
 sprite_frames = SubResource("SpriteFrames_c00yw")
 animation = &"Ufo"
 autoplay = "Ufo"
-frame_progress = 0.632876
+frame_progress = 0.128731
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2

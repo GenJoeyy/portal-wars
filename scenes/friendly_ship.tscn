@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://pd520gj3dc67"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_kgh52"]
+[ext_resource type="Texture2D" uid="uid://xek5m6eo5p6p" path="res://assets/spaceships/ships/purple.png" id="2_j6plf"]
+[ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="3_ckqtv"]
+[ext_resource type="AudioStream" uid="uid://deo0262c5170i" path="res://assets/sounds/UfoExplosion.wav" id="4_rrjkc"]
+[ext_resource type="AudioStream" uid="uid://b674qqbsswyyj" path="res://assets/sounds/hitHurt.wav" id="5_ktegi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmmk0"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4olm"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk0gc"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbkya"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu65b"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d57b6"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybk0r"]
+atlas = ExtResource("3_ckqtv")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dr1f8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4olm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk0gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbkya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu65b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d57b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybk0r")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 10.0
+}]
+
+[node name="FriendlyShip" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_kgh52")
+speed = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_j6plf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_vmmk0")
+
+[node name="DeathAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dr1f8")
+animation = &"Explosion"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rrjkc")
+volume_db = -8.0
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ktegi")

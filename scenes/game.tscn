@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cv5k2qmjein6k"]
+[gd_scene load_steps=29 format=3 uid="uid://cv5k2qmjein6k"]
 
-[ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/Player.tscn" id="1_0v1o1"]
+[ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="2_6sl5r"]
-[ext_resource type="PackedScene" uid="uid://dq5ompnc6spch" path="res://scenes/ufo_spawner.tscn" id="2_kwrr0"]
 [ext_resource type="Texture2D" uid="uid://4k13pouu1ofq" path="res://assets/menu/PW_title.png" id="3_jdr3w"]
 [ext_resource type="Texture2D" uid="uid://b3ma4wo2i5v1u" path="res://assets/menu/title_zoom/frame_000.png" id="4_2gqh8"]
 [ext_resource type="Texture2D" uid="uid://cw0ilr2ehp4j8" path="res://assets/menu/title_zoom/frame_001.png" id="5_n2bcw"]
@@ -128,25 +127,6 @@ offset_right = -91.0
 grow_horizontal = 2
 scale = Vector2(6.7933, 6.7933)
 
-[node name="Score" type="Label" parent="."]
-texture_filter = 1
-offset_left = -928.0
-offset_top = -526.0
-offset_right = -888.0
-offset_bottom = -503.0
-scale = Vector2(5, 3.939)
-theme_override_fonts/font = ExtResource("26_xm6q7")
-script = ExtResource("26_75v5m")
-
-[node name="Highscore_label" type="Label" parent="."]
-texture_filter = 1
-offset_left = 668.0
-offset_top = -526.0
-offset_right = 708.0
-offset_bottom = -503.0
-scale = Vector2(5, 3.939)
-theme_override_fonts/font = ExtResource("26_xm6q7")
-
 [node name="Background" type="Node2D" parent="."]
 
 [node name="TheVoidHolder" type="CanvasLayer" parent="Background"]
@@ -212,7 +192,6 @@ scale_amount_min = 4.0
 scale_amount_max = 5.0
 
 [node name="Menu" type="Node2D" parent="."]
-visible = false
 script = ExtResource("2_6sl5r")
 
 [node name="Title" type="AnimatedSprite2D" parent="Menu"]
@@ -229,10 +208,62 @@ one_shot = true
 
 [node name="GameContent" type="Node2D" parent="."]
 
+[node name="ScoreContainer" type="Control" parent="GameContent"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreText" type="Label" parent="GameContent/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -915.0
+offset_top = -568.0
+offset_right = -895.0
+offset_bottom = -555.0
+scale = Vector2(7.0972, 4.81792)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+text = "Score"
+
+[node name="Score" type="Label" parent="GameContent/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -883.0
+offset_top = -483.0
+offset_right = -879.0
+offset_bottom = -470.0
+scale = Vector2(14.0784, 5.21541)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+text = "0
+"
+script = ExtResource("26_75v5m")
+
+[node name="HighscoreText" type="Label" parent="GameContent/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 987.0
+offset_top = -543.0
+offset_right = 1021.0
+offset_bottom = -530.0
+scale = Vector2(5.13806, 5.2092)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+text = "Highscore"
+
+[node name="Highscore" type="Label" parent="GameContent/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 1041.0
+offset_top = -475.0
+offset_right = 1045.0
+offset_bottom = -462.0
+scale = Vector2(7.93674, 3.48651)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+text = "0
+"
+horizontal_alignment = 2
+
 [node name="Player" parent="GameContent" instance=ExtResource("1_0v1o1")]
 scale = Vector2(3.14001, 3.14001)
-collision_mask = 2
-health = 30
 
 [node name="FireRate" type="Timer" parent="GameContent/Player"]
 wait_time = 0.5
@@ -240,26 +271,8 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="GameContent"]
 
-[node name="Spawner" type="Node" parent="GameContent"]
-
-[node name="UfoSpawner1" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
-position = Vector2(803, -767)
-
-[node name="UfoSpawner2" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
-position = Vector2(9, -820)
-
-[node name="UfoSpawner3" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
-position = Vector2(-903, -714)
-
-[node name="UfoSpawner4" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
-position = Vector2(-1191, 9)
-
-[node name="UfoSpawner8" parent="GameContent/Spawner" instance=ExtResource("2_kwrr0")]
-position = Vector2(1296, -2)
-
 [node name="PortalTimer" type="Timer" parent="GameContent"]
 wait_time = 15.0
-autostart = true
 
 [connection signal="timeout" from="Menu/TitleTimer" to="Menu" method="_on_title_timer_timeout"]
 [connection signal="timeout" from="GameContent/PortalTimer" to="." method="_on_portal_timer_timeout"]

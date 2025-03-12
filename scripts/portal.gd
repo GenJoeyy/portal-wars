@@ -1,7 +1,7 @@
 extends Area2D
 class_name Portal
 
-static var shape = Vector2i(25, 85)
+static var shape = Vector2(25, 85)
 
 static var tp_allowed_dict = {} # holds (tp_allowed: bool) for every object
 
@@ -15,6 +15,7 @@ func _ready():
 	connect("area_exited", Callable(self, "_on_area_exited"))
 	set_color()
 	birth()
+
 
 func set_color() -> void:
 	if color == "green":

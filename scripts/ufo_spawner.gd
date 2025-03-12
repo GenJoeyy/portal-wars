@@ -1,6 +1,7 @@
 extends Node2D
-@onready var ufo_enemy = preload("res://scenes/ufo.tscn")
-@onready var player: CharacterBody2D = $"../../Player"
+
+@onready var ufo_scene = preload("res://scenes/ufo.tscn")
+@onready var player: Player = $"/root/Game/GameContent/Player"
 @onready var spawn_cd: Timer = $SpawnCD
 
 func _ready() -> void:
@@ -13,7 +14,8 @@ func set_timer():
 	spawn_cd.start()
 
 func _on_timer_timeout() -> void:
-	var ufo = ufo_enemy.instantiate()
+	var ufo = ufo_scene.instantiate()
+	ufo.direction = player.global_position
 	ufo.position = position 
 	get_parent().add_child(ufo)
 	set_timer()
