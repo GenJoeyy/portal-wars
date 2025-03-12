@@ -8,7 +8,7 @@ func _ready() -> void:
 	spawn_cd.start()
 
 func set_timer():
-	var randomTime =randi_range(4, 9)
+	var randomTime = randi_range(4, 9)
 	spawn_cd.set_wait_time(randomTime)
 	spawn_cd.start()
 

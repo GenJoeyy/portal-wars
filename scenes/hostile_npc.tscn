@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjmmlvghw7hdg"]
+
+[sub_resource type="GDScript" id="GDScript_r7grl"]
+script/source = "extends NPC
+class_name HostileNPC
+
+@onready var bullet_scene: Bullet = $Bullet
+
+@export var fire_rate: float = 0.5
+
+var shoot_timer: Timer
+
+func _ready() -> void:
+	super()
+	setup_shoot_timer()
+
+func die() -> void:
+	play_death_animation()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is Bullet and area.is_player_bullet:
+		var bullet: Bullet = area
+		hit(bullet.damage)
+	elif area.get_parent() is Player:
+		hit(1)
+
+func setup_shoot_timer() -> void:
+	shoot_timer = Timer.new()
+	shoot_timer.wait_time = 1 / fire_rate
+	shoot_timer.autostart = true
+	shoot_timer.one_shot = false
+	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	add_child(shoot_timer)
+
+func _on_shoot_timer_timeout() -> void:
+	if alive:
+		shoot()
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position
+	bullet.direction = (position - player.position).normalized()
+	get_parent().add_child(bullet)
+"
+
+[node name="HostileNPC" type="CharacterBody2D"]
+script = SubResource("GDScript_r7grl")
+fire_rate = null
+is_hostile = null
+health = null
+speed = null
+fire_rate = null

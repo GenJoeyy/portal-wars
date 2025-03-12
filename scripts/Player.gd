@@ -1,6 +1,7 @@
 extends CharacterBody2D
+class_name Player
 
-@onready var bullet_scene = preload("res://scenes/player_bullet.tscn")
+@onready var bullet_scene = preload("res://scenes/player_bullet_blue.tscn")
 @onready var timer: Timer = $FireRate
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
@@ -57,7 +58,7 @@ func shoot():
 	shot_sound.play()
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
-	bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
+	bullet.direction = (position - get_global_mouse_position()).normalized()
 	get_parent().add_child(bullet)
 	timer.start()
 

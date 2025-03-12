@@ -5,6 +5,7 @@ extends Node2D
 
 
 const PORTAL = preload("res://scenes/portal.tscn")
+const UFO = preload("res://scenes/ufo.tscn")
 var portal_shape: Vector2i = PORTAL.instantiate().shape
 var portal_spawn_borders
 
@@ -12,13 +13,19 @@ var green_portal: Portal
 var purple_portal: Portal
 
 func _ready() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	heartcontainer.set_Max_Hearts(player.health)
 	heartcontainer.update_Hearts(player.current_health)
 	player.healthChanged.connect(heartcontainer.update_Hearts)
 	highscore_label.text = "Highscore = " + str(SaveLoad.highscore)
 	set_portal_spawn_borders()
 	spawn_new_portals()
+	
+	var ufo = UFO.instantiate()
+	ufo.is_hostile = true
+	ufo.direction = player.global_position
+	ufo.position = rand_portal_coords()
+	add_child(ufo)
 
 func set_portal_spawn_borders() -> void:
 	portal_spawn_borders = get_viewport().get_size() - portal_shape

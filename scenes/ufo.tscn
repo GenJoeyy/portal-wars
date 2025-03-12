@@ -1,40 +1,40 @@
-[gd_scene load_steps=17 format=3 uid="uid://74t8yh7qg47m"]
+[gd_scene load_steps=17 format=3 uid="uid://bkonpvlqwyd4q"]
 
 [ext_resource type="Script" path="res://scripts/ufo.gd" id="1_321qx"]
 [ext_resource type="Texture2D" uid="uid://cp6p5hdu81rat" path="res://assets/SpaceJammed_Sprites.png" id="2_jpqda"]
-[ext_resource type="AudioStream" uid="uid://deo0262c5170i" path="res://assets/Sounds/UfoExplosion.wav" id="3_knu2y"]
-[ext_resource type="AudioStream" uid="uid://b674qqbsswyyj" path="res://assets/Sounds/hitHurt.wav" id="4_351bj"]
+[ext_resource type="AudioStream" uid="uid://deo0262c5170i" path="res://assets/sounds/UfoExplosion.wav" id="3_knu2y"]
+[ext_resource type="AudioStream" uid="uid://b674qqbsswyyj" path="res://assets/sounds/hitHurt.wav" id="4_351bj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhmuk"]
-atlas = ExtResource("2_jpqda")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cdsi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_huamw"]
 atlas = ExtResource("2_jpqda")
 region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg4vo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_62a62"]
+atlas = ExtResource("2_jpqda")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwyjc"]
 atlas = ExtResource("2_jpqda")
 region = Rect2(32, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k6p2a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c00yw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jhmuk")
+"texture": SubResource("AtlasTexture_huamw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1cdsi")
+"texture": SubResource("AtlasTexture_62a62")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jg4vo")
+"texture": SubResource("AtlasTexture_fwyjc")
 }],
 "loop": true,
 "name": &"Ufo",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5wkwq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k33d1"]
 radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4olm"]
@@ -61,7 +61,7 @@ region = Rect2(32, 64, 16, 16)
 atlas = ExtResource("2_jpqda")
 region = Rect2(48, 64, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6dd13"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmycy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -85,46 +85,37 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ybk0r")
 }],
-"loop": true,
+"loop": false,
 "name": &"Explosion",
 "speed": 10.0
 }]
 
-[node name="Ufo" type="CharacterBody2D"]
-scale = Vector2(4.36657, 4.36657)
+[node name="TestUFO" type="CharacterBody2D"]
+scale = Vector2(4.367, 4.367)
 script = ExtResource("1_321qx")
-movement_speed = 200
+is_hostile = true
+speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_k6p2a")
+sprite_frames = SubResource("SpriteFrames_c00yw")
 animation = &"Ufo"
 autoplay = "Ufo"
-frame_progress = 0.483418
+frame_progress = 0.632876
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_5wkwq")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_k33d1")
 
-[node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6dd13")
+[node name="DeathAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fmycy")
 animation = &"Explosion"
+frame_progress = 0.327958
 
-[node name="TimerDeath" type="Timer" parent="."]
-wait_time = 0.6
-
-[node name="Explosion_Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_knu2y")
 volume_db = -8.0
 
-[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_351bj")
-
-[node name="TimerShoot" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="TimerDeath" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]

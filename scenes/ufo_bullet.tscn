@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt1d5od7ldrvl"]
+[gd_scene load_steps=4 format=3 uid="uid://dq3e3ct2nkyqh"]
 
-[ext_resource type="Script" path="res://scripts/ufo_bullet.gd" id="1_wp036"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_kucyx"]
 [ext_resource type="Texture2D" uid="uid://cds5on05u514s" path="res://assets/02.png" id="2_2kmfg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0cxu5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_865k5"]
 radius = 51.7929
 
-[node name="ufo_bullet" type="Area2D"]
+[node name="TestUfoBullet" type="Area2D"]
 scale = Vector2(2, 2)
 collision_layer = 2
-script = ExtResource("1_wp036")
-speed = 500
+script = ExtResource("1_kucyx")
+speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.210405, 0.210405)
@@ -18,6 +18,6 @@ texture = ExtResource("2_2kmfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.0351113, 0.0351113)
-shape = SubResource("CircleShape2D_0cxu5")
+shape = SubResource("CircleShape2D_865k5")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

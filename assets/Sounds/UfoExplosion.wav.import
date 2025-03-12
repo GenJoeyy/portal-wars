@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://deo0262c5170i"
-path="res://.godot/imported/UfoExplosion.wav-fcd180e3b7955dd80cdea433e3485ff8.sample"
+path="res://.godot/imported/UfoExplosion.wav-8e325cd8413ab8d59d03623f28e2d2e9.sample"
 
 [deps]
 
-source_file="res://assets/Sounds/UfoExplosion.wav"
-dest_files=["res://.godot/imported/UfoExplosion.wav-fcd180e3b7955dd80cdea433e3485ff8.sample"]
+source_file="res://assets/sounds/UfoExplosion.wav"
+dest_files=["res://.godot/imported/UfoExplosion.wav-8e325cd8413ab8d59d03623f28e2d2e9.sample"]
 
 [params]
 
