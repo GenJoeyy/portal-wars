@@ -67,7 +67,8 @@ func tp_allowed(object) -> bool:
 	return tp_allowed_dict[id]
 	
 func enable_tp(object):
-	Global.score += 1
+	if object is NPC and object.is_hostile: 
+		Global.score += 3
 	var id = object.get_instance_id()
 	tp_allowed_dict[id] = true
 	

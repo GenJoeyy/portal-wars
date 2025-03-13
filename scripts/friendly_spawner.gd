@@ -3,6 +3,7 @@ extends Node2D
 @onready var friendly_scene = preload("res://scenes/friendly_ship.tscn")
 @onready var spawn_cd: Timer = $SpawnCD
 
+
 func _ready() -> void:
 	set_timer()
 	spawn_cd.start()
@@ -21,5 +22,7 @@ func _on_timer_timeout() -> void:
 	var friendly = friendly_scene.instantiate()
 	friendly.position = position
 	friendly.direction = position - Vector2(-position.x, position.y)
+	if friendly.position.x > 0:
+		friendly.flip() #Facing the direction they are flying 
 	get_parent().add_child(friendly)
 	set_timer()

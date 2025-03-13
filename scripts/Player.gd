@@ -6,8 +6,8 @@ class_name Player
 @onready var shot_sound: AudioStreamPlayer2D = $ShotSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var blue_skin: AnimatedSprite2D = $BlueSkin
-@onready var highscore: Label = $"../../Highscore"
 @onready var current_health = health
+@onready var highscore: Label = $"../ScoreContainer/Highscore"
 
 @export var skin = "Y-Wing"
 @export var movement_speed: float = 500

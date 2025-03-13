@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6785a"]
 [ext_resource type="Texture2D" uid="uid://plwpilttlwha" path="res://assets/spaceships/Blue.png" id="2_5s34c"]
 [ext_resource type="Texture2D" uid="uid://dyxricmngvjd8" path="res://assets/spaceships/Blue_exhaust.png" id="3_6q135"]
-[ext_resource type="AudioStream" uid="uid://3adyl6ig8ofa" path="res://assets/sounds/PlayerBullet1.wav" id="3_bye47"]
+[ext_resource type="AudioStream" uid="uid://3adyl6ig8ofa" path="res://assets/Sounds/PlayerBullet1.wav" id="3_bye47"]
 [ext_resource type="Texture2D" uid="uid://xrkqqjaje3hw" path="res://assets/spaceships/y-wing_custom.png" id="3_oskxq"]
 [ext_resource type="Texture2D" uid="uid://dco53r0ggjmci" path="res://assets/spaceships/y-wing_custom_exhaust.png" id="4_l4afk"]
-[ext_resource type="AudioStream" uid="uid://cstiq20wjorqm" path="res://assets/sounds/Hit_3.wav" id="4_myb8p"]
+[ext_resource type="AudioStream" uid="uid://cstiq20wjorqm" path="res://assets/Sounds/Hit_3.wav" id="4_myb8p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8igeu"]
 radius = 10.4778

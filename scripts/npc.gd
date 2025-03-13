@@ -7,6 +7,7 @@ class_name NPC
 @onready var death_animation: AnimatedSprite2D = $DeathAnimation
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
+
 @export var is_hostile: bool 
 @export var health: float = 1
 @export var speed: float = 150
@@ -42,6 +43,8 @@ func hit(damage_taken: float) -> void:
 			die()
 
 func die() -> void:
+	if not is_hostile: 
+		Global.score -= 2 #Man verliert Score wenn man Friendlies anschießt
 	alive = false
 	hitbox.queue_free()
 	play_death_animation()
@@ -84,3 +87,7 @@ func shoot():
 	bullet.position = position
 	bullet.direction = (position - player.position).normalized()
 	get_parent().add_child(bullet)
+
+func flip():
+	var sprite_2d = $Sprite2D
+	sprite_2d.flip_h = true
