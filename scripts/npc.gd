@@ -6,6 +6,7 @@ class_name NPC
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var death_animation: AnimatedSprite2D = $DeathAnimation
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
+@onready var death_sound_2: AudioStreamPlayer2D = $DeathSound2
 
 
 @export var is_hostile: bool 
@@ -54,7 +55,8 @@ func play_death_animation() -> void:
 		death_animation.play()
 	if death_sound:
 		death_sound.play()
-	
+	if death_sound_2:
+		death_sound_2.play()
 	death_animation.animation_finished.connect(queue_free)
 
 func setup_hit_detection() -> void:
