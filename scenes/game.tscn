@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cv5k2qmjein6k"]
+[gd_scene load_steps=35 format=3 uid="uid://cv5k2qmjein6k"]
 
 [ext_resource type="PackedScene" uid="uid://irxuonymwrlt" path="res://scenes/player.tscn" id="1_0v1o1"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_syosi"]
@@ -24,9 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://cm4shnj86jmxy" path="res://assets/menu/title_zoom/frame_017.png" id="21_fkm25"]
 [ext_resource type="Texture2D" uid="uid://jx12nmyxq168" path="res://assets/menu/title_zoom/frame_018.png" id="22_lcegx"]
 [ext_resource type="Texture2D" uid="uid://bk5pf7ca76p22" path="res://assets/menu/title_zoom/frame_019.png" id="23_vplf2"]
+[ext_resource type="AudioStream" uid="uid://mb8ctusnj8k1" path="res://assets/sounds/menu_music.mp3" id="25_akoks"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="26_75v5m"]
 [ext_resource type="FontFile" uid="uid://fdhcg2iwxp64" path="res://assets/Fonts/m3x6.ttf" id="26_xm6q7"]
 [ext_resource type="PackedScene" uid="uid://hegytmds88o4" path="res://scenes/heartcontainer.tscn" id="28_sfbw2"]
+[ext_resource type="AudioStream" uid="uid://ceshoh0ra5mi" path="res://assets/sounds/Powerwalkin_-Future-Joust.mp3" id="29_qnqdb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fddup"]
 animations = [{
@@ -113,19 +115,20 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoe2q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik7j2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p12qp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keuqc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_syosi")
-
-[node name="Health" type="CanvasLayer" parent="."]
-
-[node name="Heartcontainer" parent="Health" instance=ExtResource("28_sfbw2")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -91.0
-offset_right = -91.0
-grow_horizontal = 2
-scale = Vector2(6.7933, 6.7933)
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -196,8 +199,11 @@ scale_amount_max = 5.0
 metadata/_edit_lock_ = true
 
 [node name="Menu" type="Node2D" parent="."]
-visible = false
 script = ExtResource("2_6sl5r")
+
+[node name="TitleTimer" type="Timer" parent="Menu"]
+wait_time = 0.8
+one_shot = true
 
 [node name="Title" type="AnimatedSprite2D" parent="Menu"]
 z_index = -60
@@ -207,17 +213,74 @@ sprite_frames = SubResource("SpriteFrames_fddup")
 animation = &"zoom in"
 frame_progress = 0.0864704
 
-[node name="TitleTimer" type="Timer" parent="Menu"]
-wait_time = 0.8
-one_shot = true
+[node name="Buttons" type="VBoxContainer" parent="Menu"]
+visible = false
+offset_left = -119.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 120.0
+scale = Vector2(1.76373, 1.76373)
+
+[node name="ButtonPlay" type="Button" parent="Menu/Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_pressed_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_focus_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_colors/font_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_eoe2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ik7j2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p12qp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuqc")
+text = "PLAY"
+
+[node name="ButtonShip" type="Button" parent="Menu/Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_pressed_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_focus_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_colors/font_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_eoe2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ik7j2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p12qp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuqc")
+text = "CHANGE SHIP"
+
+[node name="ButtonQuit" type="Button" parent="Menu/Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_pressed_color = Color(0.0901961, 0.752941, 0.913725, 1)
+theme_override_colors/font_focus_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_colors/font_color = Color(0.0156863, 0.423529, 0.839216, 1)
+theme_override_fonts/font = ExtResource("26_xm6q7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_eoe2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ik7j2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p12qp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuqc")
+text = "QUIT"
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="Menu"]
+stream = ExtResource("25_akoks")
+volume_db = -5.557
+autoplay = true
+parameters/looping = true
 
 [node name="GameContent" type="Node2D" parent="."]
 
 [node name="ScoreContainer" type="Control" parent="GameContent"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="ScoreText" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
@@ -229,6 +292,7 @@ offset_bottom = -527.0
 scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
 text = "Score"
+metadata/_edit_lock_ = true
 
 [node name="Score" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
@@ -241,6 +305,7 @@ scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
 text = "0"
 script = ExtResource("26_75v5m")
+metadata/_edit_lock_ = true
 
 [node name="HighscoreText" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
@@ -263,11 +328,23 @@ offset_right = 746.0
 offset_bottom = -482.0
 scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
-text = "1000000"
+text = "0"
 horizontal_alignment = 2
 metadata/_edit_lock_ = true
 
+[node name="Health" type="CanvasLayer" parent="GameContent"]
+
+[node name="Heartcontainer" parent="GameContent/Health" instance=ExtResource("28_sfbw2")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_right = -91.0
+grow_horizontal = 2
+scale = Vector2(6.7933, 6.7933)
+
 [node name="Player" parent="GameContent" instance=ExtResource("1_0v1o1")]
+visible = false
 scale = Vector2(3.14001, 3.14001)
 
 [node name="FireRate" type="Timer" parent="GameContent/Player"]
@@ -279,5 +356,13 @@ one_shot = true
 [node name="PortalTimer" type="Timer" parent="GameContent"]
 wait_time = 15.0
 
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="GameContent"]
+stream = ExtResource("29_qnqdb")
+volume_db = -13.796
+parameters/looping = true
+
 [connection signal="timeout" from="Menu/TitleTimer" to="Menu" method="_on_title_timer_timeout"]
+[connection signal="pressed" from="Menu/Buttons/ButtonPlay" to="Menu" method="_on_button_play_pressed"]
+[connection signal="pressed" from="Menu/Buttons/ButtonShip" to="Menu" method="_on_button_ship_pressed"]
+[connection signal="pressed" from="Menu/Buttons/ButtonQuit" to="Menu" method="_on_button_quit_pressed"]
 [connection signal="timeout" from="GameContent/PortalTimer" to="." method="_on_portal_timer_timeout"]

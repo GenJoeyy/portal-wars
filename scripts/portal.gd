@@ -71,7 +71,6 @@ func enable_tp(object):
 	var id = object.get_instance_id()
 	tp_allowed_dict[id] = true
 	
-	
 func disable_tp(object):
 	var id = object.get_instance_id()
 	tp_allowed_dict[id] = false

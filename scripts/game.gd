@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var heartcontainer: HBoxContainer = $Health/Heartcontainer
+@onready var heartcontainer: HBoxContainer = $GameContent/Health/Heartcontainer
 @onready var player: CharacterBody2D = $GameContent/Player
 
 const PORTAL = preload("res://scenes/portal.tscn")
@@ -15,7 +15,6 @@ var purple_portal: Portal
 
 func _ready() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	start_game()
 
 func _process(delta: float) -> void:
 	if game_running:
@@ -24,8 +23,13 @@ func _process(delta: float) -> void:
 		purple_portal.look_at(Vector2.ZERO)
 
 func start_game() -> void:
-	game_running = true
+	$Menu.enabled = false
+	$Menu/MenuMusic.stop()
+	$GameContent/GameMusic.play()
 	
+	game_running = true
+	player.active = true
+	$GameContent/ScoreContainer.visible = true
 	setup_ufo_spawners()
 	setup_friendly_spawner()
 	setup_portal_spawns()

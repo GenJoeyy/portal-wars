@@ -17,7 +17,15 @@ signal healthChanged
 var player_direction: Vector2
 var alive = true
 
+var active = false
+
 func _physics_process(_delta: float) -> void:
+	if not active:
+		visible = false
+		return
+	else:
+		visible = true
+		
 	if skin == "Y-Wing" : 
 		$"Y-WingSkin".play(skin + " Boost" if player_direction else skin)
 		$BlueSkin.visible = false
