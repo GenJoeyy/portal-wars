@@ -141,10 +141,11 @@ anchor_bottom = 1.11932
 scale = Vector2(0.99088, 0.988728)
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="StarsLayerMiddle" type="CPUParticles2D" parent="Background"]
 z_index = -95
-position = Vector2(1180, 0)
+position = Vector2(1264, 0)
 amount = 500
 lifetime = 115.0
 preprocess = 115.0
@@ -158,6 +159,7 @@ initial_velocity_min = 20.0
 initial_velocity_max = 20.0
 scale_amount_min = 2.5
 scale_amount_max = 3.5
+metadata/_edit_lock_ = true
 
 [node name="StarsLayerBack" type="CPUParticles2D" parent="Background"]
 z_index = -100
@@ -173,6 +175,7 @@ spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 15.0
 initial_velocity_max = 15.0
+metadata/_edit_lock_ = true
 
 [node name="StarsLayerFront" type="CPUParticles2D" parent="Background"]
 z_index = -90
@@ -190,8 +193,10 @@ initial_velocity_min = 28.0
 initial_velocity_max = 28.0
 scale_amount_min = 4.0
 scale_amount_max = 5.0
+metadata/_edit_lock_ = true
 
 [node name="Menu" type="Node2D" parent="."]
+visible = false
 script = ExtResource("2_6sl5r")
 
 [node name="Title" type="AnimatedSprite2D" parent="Menu"]
@@ -217,50 +222,50 @@ offset_bottom = 40.0
 [node name="ScoreText" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_left = -915.0
-offset_top = -568.0
-offset_right = -895.0
-offset_bottom = -555.0
-scale = Vector2(7.0972, 4.81792)
+offset_left = -925.0
+offset_top = -540.0
+offset_right = -905.0
+offset_bottom = -527.0
+scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
 text = "Score"
 
 [node name="Score" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_left = -883.0
-offset_top = -483.0
-offset_right = -879.0
-offset_bottom = -470.0
-scale = Vector2(14.0784, 5.21541)
+offset_left = -925.0
+offset_top = -495.0
+offset_right = -921.0
+offset_bottom = -482.0
+scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
-text = "0
-"
+text = "0"
 script = ExtResource("26_75v5m")
 
 [node name="HighscoreText" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 987.0
-offset_top = -543.0
-offset_right = 1021.0
-offset_bottom = -530.0
-scale = Vector2(5.13806, 5.2092)
+offset_left = 760.0
+offset_top = -540.0
+offset_right = 794.0
+offset_bottom = -527.0
+scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
 text = "Highscore"
+metadata/_edit_lock_ = true
 
 [node name="Highscore" type="Label" parent="GameContent/ScoreContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 1041.0
-offset_top = -475.0
-offset_right = 1045.0
-offset_bottom = -462.0
-scale = Vector2(7.93674, 3.48651)
+offset_left = 700.0
+offset_top = -495.0
+offset_right = 746.0
+offset_bottom = -482.0
+scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("26_xm6q7")
-text = "0
-"
+text = "1000000"
 horizontal_alignment = 2
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="GameContent" instance=ExtResource("1_0v1o1")]
 scale = Vector2(3.14001, 3.14001)
