@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://c2xsyhe7uobfo"
-path="res://.godot/imported/success_02-68338-[AudioTrimmer.com].mp3-405f68aed12e75e8a6b2e7a51a9b0bfd.mp3str"
+path="res://.godot/imported/success_02-68338-[AudioTrimmer.com].mp3-c002be9971fbb92f8c6ca5de4e72a714.mp3str"
 
 [deps]
 
-source_file="res://assets/Sounds/success_02-68338-[AudioTrimmer.com].mp3"
-dest_files=["res://.godot/imported/success_02-68338-[AudioTrimmer.com].mp3-405f68aed12e75e8a6b2e7a51a9b0bfd.mp3str"]
+source_file="res://assets/sounds/success_02-68338-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/success_02-68338-[AudioTrimmer.com].mp3-c002be9971fbb92f8c6ca5de4e72a714.mp3str"]
 
 [params]
 

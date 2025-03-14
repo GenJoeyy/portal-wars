@@ -24,11 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://cm4shnj86jmxy" path="res://assets/menu/title_zoom/frame_017.png" id="21_fkm25"]
 [ext_resource type="Texture2D" uid="uid://jx12nmyxq168" path="res://assets/menu/title_zoom/frame_018.png" id="22_lcegx"]
 [ext_resource type="Texture2D" uid="uid://bk5pf7ca76p22" path="res://assets/menu/title_zoom/frame_019.png" id="23_vplf2"]
-[ext_resource type="AudioStream" uid="uid://mb8ctusnj8k1" path="res://assets/Sounds/menu_music.mp3" id="25_akoks"]
+[ext_resource type="AudioStream" uid="uid://mb8ctusnj8k1" path="res://assets/sounds/menu_music.mp3" id="25_akoks"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="26_75v5m"]
 [ext_resource type="FontFile" uid="uid://fdhcg2iwxp64" path="res://assets/Fonts/m3x6.ttf" id="26_xm6q7"]
 [ext_resource type="PackedScene" uid="uid://hegytmds88o4" path="res://scenes/heartcontainer.tscn" id="28_sfbw2"]
-[ext_resource type="AudioStream" uid="uid://ceshoh0ra5mi" path="res://assets/Sounds/Powerwalkin_-Future-Joust.mp3" id="29_qnqdb"]
+[ext_resource type="AudioStream" uid="uid://ceshoh0ra5mi" path="res://assets/sounds/Powerwalkin_-Future-Joust.mp3" id="29_qnqdb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fddup"]
 animations = [{
